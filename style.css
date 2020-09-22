@@ -1,0 +1,21 @@
+.formulario {
+  margin: 20px;
+  display: flex;
+  width: 200px;
+  flex-wrap: wrap;
+}
+
+.botones {
+  margin-top: 20px;
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+}
+
+table {
+  margin-top: 20px;
+}
+
+.agregarItem {
+  margin-left: 20px;
+}

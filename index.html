@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Prueba Vue JS</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1 >Lista de productos</h1>
+      <div class="formulario">
+      <label for="cantidad">Cantidad </label
+      ><select
+        @change="cantidadCambio"
+        v-bind:disabled="disabledCantidad"
+        v-model="cantidad"
+        name="cant"
+        id="cantidad"
+      >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option></select
+      ><button class="btn btn-secondary m-10" v-bind:disabled="disabledConfirmar" @click="confirmar">
+        Confirmar</button
+      ><br />
+      <label for="nombre">Nombre </label
+      ><input
+      class="text-uppercase"
+        v-bind:disabled="estado"
+        v-model="nuevoNombre"
+        id="nombre"
+        type="text"
+      /><br />
+      <label for="precio">Precio </label
+      ><input
+      
+        v-bind:disabled="estado"
+        v-model="nuevoPrecio"
+        id="precio"
+        type="text"
+      /><br />
+      <div class="botones">
+      <button class="btn btn-success" v-bind:disabled="estado" @click="agregarProducto">+</button>
+      <button class="btn btn-danger" v-bind:disabled="disabledMenos" @click="eliminar">-</button>
+      <button class="btn btn-light" @click="reset" v-bind:disabled="disabledReset">Reset</button></div>
+    </div>
+      <ul>
+        <li class="text-uppercase" v-for="producto of productos">
+          {{producto.nombre}} - ${{producto.precio}}
+        </li>
+      </ul>
+      <button class="agregarItem"
+        type="button"
+        class="btn btn-success"
+        @click="agregarItem"
+        v-if="cantidad == productos.length && disabledMenos == false"
+        v-bind:disabled = "disabledAgregar"
+      >
+        Agregar Item
+      </button>
+      <div class="table-responsive">
+      <table class="table table-hover table-bordered ">
+        <thead class="thead-dark">
+          <th>Ítem</th>
+          <th>Cantidad</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+        </thead>
+        <tbody v-for="i of items">
+          <tr v-bind:class="{'bg-secondary': pintar}" @click='seleccionar'>
+            <th class="text-center align-middle" :rowspan="i.cantidad">
+              {{i.item}}
+              <td class="text-center align-middle" :rowspan="i.cantidad">{{i.cant}}</td>
+              <tr v-bind:class="{'bg-secondary': pintar}" @click='seleccionar' v-for="i in i.productos">
+                <td class="text-uppercase">{{i.nombre}}</td>
+                <td>{{i.precio}}</td>
+                
+              </tr>
+            </th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="/main.js"></script>
+  </body>
+</html>
