@@ -13,7 +13,6 @@ const app = new Vue({
     productos: [],
     items: [],
     contador: 1,
-    pintar: false,
   },
   methods: {
     agregarProducto() {
@@ -43,7 +42,6 @@ const app = new Vue({
       this.disabledAgregar = false;
       this.productos = [];
       this.estado = true;
-      console.log(this.items);
     },
     eliminar() {
       this.productos.pop();
@@ -62,9 +60,6 @@ const app = new Vue({
         cant: this.cantidad,
       });
     },
-    seleccionar() {
-      this.pintar = !this.pintar;
-    },
   },
 });
 
@@ -73,8 +68,6 @@ const sortMenor = (productos) => {
   for (let i = 0; i < productos.length - 1; i++) {
     for (let j = i + 1; j < productos.length; j++) {
       if (productos[i].precio > productos[j].precio) {
-        console.log(productos[i].precio);
-        console.log(productos[j].precio);
         temp = productos[i];
         productos[i] = productos[j];
         productos[j] = temp;
@@ -89,8 +82,6 @@ const sortMayor = (productos) => {
   for (let i = 0; i < productos.length - 1; i++) {
     for (let j = i + 1; j < productos.length; j++) {
       if (productos[i].precio < productos[j].precio) {
-        console.log(productos[i].precio);
-        console.log(productos[j].precio);
         temp = productos[i];
         productos[i] = productos[j];
         productos[j] = temp;

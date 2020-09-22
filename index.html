@@ -72,15 +72,14 @@
           <th>Precio</th>
         </thead>
         <tbody v-for="i of items">
-          <tr v-bind:class="{'bg-secondary': pintar}" @click='seleccionar'>
+          <tr >
             <th class="text-center align-middle" :rowspan="i.cantidad">
               {{i.item}}
               <td class="text-center align-middle" :rowspan="i.cantidad">{{i.cant}}</td>
-              <tr v-bind:class="{'bg-secondary': pintar}" @click='seleccionar' v-for="i in i.productos">
+              <tr    v-for="i in i.productos">
                 <td class="text-uppercase">{{i.nombre}}</td>
-                <td>{{i.precio}}</td>
-                
-              </tr>
+                <td>{{i.precio}}</td>             
+              </tr>          
             </th>
           </tr>
         </tbody>
